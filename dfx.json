@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "login_apps_backend": {
+      "main": "src/login_apps_backend/main.mo",
+      "type": "motoko"
+    },
+    "login_apps_frontend": {
+      "dependencies": [
+        "login_apps_backend"
+      ],
+      "source": [
+        "src/login_apps_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "login_apps_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
