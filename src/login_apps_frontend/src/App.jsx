@@ -1,31 +1,26 @@
 import { useState } from 'react';
 import { login_apps_backend } from 'declarations/login_apps_backend';
 
+import { useAuth, AuthProvider } from './AuthProvider' // sama kayak laravel buat authnya dlu (namabahin authprovider)
+
+import Home from './Home';
+import Logout from './Logout';
+
 function App() {
-  const [greeting, setGreeting] = useState('');
+  const { isAuth } = useAuth();//with this type call can acces the fucntion on the Authrpovide result
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    login_apps_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
 
+  //clear the original code main file
   return (
     <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
+      {isAuth ? <Home /> : <Logout />}
     </main>
-  );
-}
+  );//end return
 
-export default App;
+}//end App
+
+export default () => (
+  <AuthProvider>
+    <App />
+  </AuthProvider>
+);
