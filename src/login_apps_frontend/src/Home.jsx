@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { useAuth } from './AuthProvider' // sama kayak laravel buat authnya dlu
 
@@ -10,7 +10,8 @@ export default function Home() {
     const { callFucntion, logout } = useAuth();//with this type call can acces the fucntion on the Authrpovide result
 
     const handleClick = async () => {
-        const id = await callFucntion.getprincipal();
+        const id = await callFunction.idprincipal();
+
         setResult(id);
     }//this have the correlation with backend 
 
@@ -30,7 +31,7 @@ export default function Home() {
                 <h2>This is Your id Principal: {result}</h2>
 
                 <button id="logout" onClick={logout}>
-                    Log out
+                    log out
                 </button>
             </center>
         </div>
