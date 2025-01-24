@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 import { AuthClient } from '@dfinity/auth-client' // to connect to npm auth client 
-import { createActor } from 'declarations/login_apps_backend';// need to add to import the actor
+import { createActor, canisterId } from 'declarations/login_apps_backend';// need to add to import the actor
 const AuthContext = createContext();
 
 const defaultOptions = {
@@ -69,7 +69,7 @@ export const useAuthClient = (options = defaultOptions) => {
                 updateClient(authUser);
             },
         });
-    }//end login 
+    };//end login 
 
     async function logout() {
         //when run this function autentication became false
@@ -80,7 +80,7 @@ export const useAuthClient = (options = defaultOptions) => {
 
     return {
         //we need to return all the value after run the fucntion 
-        isAuth, login, logout, authUser, identity, principal, callFunction
+        isAuth, login, logout, authUser, identity, principal, callFunction,
     }//end return
 
 }//end export const 
