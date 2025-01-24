@@ -7,7 +7,7 @@ export default function Home() {
 
     const [result, setResult] = useState("");
 
-    const { callFucntion, logout } = useAuth();//with this type call can acces the fucntion on the Authrpovide result
+    const { callFunction, logout } = useAuth();//with this type call can acces the fucntion on the Authrpovide result
 
     const handleClick = async () => {
         const id = await callFunction.idprincipal();
