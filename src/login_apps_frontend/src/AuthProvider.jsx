@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { createContext, useState } from 'react'
 import { AuthClient } from '@dfinity/auth-client' // to connect to npm auth client 
 import { createActor } from 'declarations/login_apps_backend';// need to add to import the actor
 const AuthContext = createContext();
@@ -6,7 +6,7 @@ const AuthContext = createContext();
 const defaultOptions = {
     createOptions: {
         idleOptions: {
-            disable: true,
+            disableIdle: true,
         }
     },
 
